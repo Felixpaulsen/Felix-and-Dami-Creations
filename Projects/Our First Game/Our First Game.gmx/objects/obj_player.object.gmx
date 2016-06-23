@@ -83,11 +83,13 @@ else
 if keyboard_check(vk_left) &amp;&amp; place_free(x-spd,y)
 {
     x-=spd;
+    image_xscale = -1;
 }
 
 if keyboard_check(vk_right) &amp;&amp; place_free(x+spd,y)
 {
     x+=spd;
+    image_xscale = 1;
 }
 
 if keyboard_check(vk_up) &amp;&amp; !place_free(x,y+1)
