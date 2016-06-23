@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initialize variables
-spd = 8;
+            <string>image_blend = c_black;
 </string>
           </argument>
         </arguments>
@@ -35,91 +34,33 @@ spd = 8;
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
+        <id>121</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
+        <exetype>1</exetype>
+        <functionname>action_potential_step</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
-        <relative>0</relative>
+        <relative>-1</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>1</kind>
-            <string>///Gravity
-if place_free(x,y+1)
-{
-    gravity = 0.5;
-    gravity_direction = 270;
-}
-else
-{
-    gravity = 0;
-}
-</string>
+            <kind>0</kind>
+            <string>obj_player.x</string>
           </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
           <argument>
-            <kind>1</kind>
-            <string>///Movement
-if keyboard_check(vk_left) &amp;&amp; place_free(x-spd,y)
-{
-    x-=spd;
-}
-
-if keyboard_check(vk_right) &amp;&amp; place_free(x+spd,y)
-{
-    x+=spd;
-}
-
-if keyboard_check(vk_up) &amp;&amp; !place_free(x,y+1)
-{
-    vspeed -= 17;
-}
-</string>
+            <kind>0</kind>
+            <string>obj_player.y</string>
           </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_dirt">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
           <argument>
-            <kind>1</kind>
-            <string>///Collision
-move_contact_solid(direction,12);
-vspeed = 0;
-</string>
+            <kind>0</kind>
+            <string>4</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
           </argument>
         </arguments>
       </action>
