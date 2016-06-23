@@ -94,7 +94,7 @@ if keyboard_check(vk_right) &amp;&amp; place_free(x+spd,y)
 
 if keyboard_check(vk_up) &amp;&amp; !place_free(x,y+1)
 {
-    vspeed -= 17;
+    vspeed -= 8.5;
 }
 </string>
           </argument>
