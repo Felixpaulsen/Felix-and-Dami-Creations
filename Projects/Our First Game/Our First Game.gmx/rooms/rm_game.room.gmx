@@ -11,7 +11,10 @@
   <colour>16755801</colour>
   <showcolour>-1</showcolour>
   <code>//Create controller
-instance_create(x,y,obj_controller);</code>
+instance_create(x,y,obj_controller);
+instance_create(x,y,obj_light);
+instance_create(x,y,obj_light_engine);
+instance_create(x,y,obj_draw_sky);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -27,7 +30,7 @@ instance_create(x,y,obj_controller);</code>
     <showViews>0</showViews>
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
-    <page>0</page>
+    <page>1</page>
     <xoffset>4585</xoffset>
     <yoffset>641</yoffset>
   </makerSettings>

@@ -278,7 +278,7 @@
     <option_in_app_purchase_sandbox_mode>0</option_in_app_purchase_sandbox_mode>
     <option_in_app_purchase_server_url></option_in_app_purchase_server_url>
     <option_information></option_information>
-    <option_interpolate>False</option_interpolate>
+    <option_interpolate>True</option_interpolate>
     <option_ios_adcolony_enable_V4VC>false</option_ios_adcolony_enable_V4VC>
     <option_ios_advertising_enable>false</option_ios_advertising_enable>
     <option_ios_advertising_key></option_ios_advertising_key>
@@ -458,7 +458,7 @@
     <option_tizen_google_analytics_enable>0</option_tizen_google_analytics_enable>
     <option_tizen_google_tracking_id></option_tizen_google_tracking_id>
     <option_tizen_iap_groupID></option_tizen_iap_groupID>
-    <option_tizen_icon>Configs\Default\tizen\icon48.png</option_tizen_icon>
+    <option_tizen_icon>Configs\Default\tizen\icon117.png</option_tizen_icon>
     <option_tizen_interpolate>-1</option_tizen_interpolate>
     <option_tizen_major_version>1</option_tizen_major_version>
     <option_tizen_minor_version>0</option_tizen_minor_version>
@@ -548,7 +548,7 @@
     <option_winUAP_wide_logo>Configs\Default\WindowsUAP\logos\WideLogo.scale-100.png</option_winUAP_wide_logo>
     <option_windowcolor>clBlack</option_windowcolor>
     <option_windows_alternate_sync_method>False</option_windows_alternate_sync_method>
-    <option_windows_build_version>0</option_windows_build_version>
+    <option_windows_build_version>1</option_windows_build_version>
     <option_windows_company_info></option_windows_company_info>
     <option_windows_copyright_info></option_windows_copyright_info>
     <option_windows_create_textures_on_demand>False</option_windows_create_textures_on_demand>
