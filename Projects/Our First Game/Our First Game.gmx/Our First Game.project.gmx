@@ -7,8 +7,10 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_dirt</sprite>
+    <sprite>sprites\spr_dirt_cave</sprite>
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_player_run</sprite>
+    <sprite>sprites\spr_ladder</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -16,6 +18,8 @@
     <object>objects\obj_dirt</object>
     <object>objects\obj_player</object>
     <object>objects\obj_controller</object>
+    <object>objects\obj_ladder</object>
+    <object>objects\obj_dirt_cave</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_game</room>
