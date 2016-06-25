@@ -14,9 +14,18 @@
     <sprites name="Engines">
       <sprite>sprites\spr_light</sprite>
     </sprites>
+    <sprites name="Buttons">
+      <sprite>sprites\spr_button_left</sprite>
+      <sprite>sprites\spr_button_right</sprite>
+      <sprite>sprites\spr_button_up</sprite>
+      <sprite>sprites\spr_button_down</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\AddVKey.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\obj_dirt</object>
     <object>objects\obj_player</object>
@@ -27,6 +36,12 @@
       <object>objects\obj_light</object>
       <object>objects\obj_light_engine</object>
       <object>objects\obj_draw_sky</object>
+    </objects>
+    <objects name="Buttons">
+      <object>objects\obj_button_left</object>
+      <object>objects\obj_button_right</object>
+      <object>objects\obj_button_up</object>
+      <object>objects\obj_button_down</object>
     </objects>
   </objects>
   <rooms name="rooms">
