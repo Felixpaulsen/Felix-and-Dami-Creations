@@ -63,7 +63,7 @@ else
     gravity = 0;
 }
 
-image_xscale = hspeed/2.5;
+image_xscale = hspeed/spd;
 </string>
           </argument>
         </arguments>
@@ -121,23 +121,13 @@ image_xscale = hspeed/2.5;
             <string>///Collision
 move_contact_solid(direction,12);
 vspeed = 0;
+if !(abs(x-obj_player.x) &lt; 250)
+{
+    hspeed = -1*hspeed;
+}
 </string>
           </argument>
         </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>113</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_reverse_xdir</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
       </action>
     </event>
   </events>
