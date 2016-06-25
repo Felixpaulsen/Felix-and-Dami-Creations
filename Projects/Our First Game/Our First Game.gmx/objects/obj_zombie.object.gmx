@@ -27,7 +27,8 @@
             <kind>1</kind>
             <string>///Hspeed
 randomize();
-hspeed = choose(-2.5,2.5);
+spd = choose(1.5,1.75,2,2.25,2.5,2.75,3);
+hspeed = choose(spd,-spd);
 image_speed = 0.25;
 </string>
           </argument>
@@ -63,6 +64,38 @@ else
 }
 
 image_xscale = hspeed/2.5;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if abs(x-obj_player.x) &lt; 250
+{
+    if x-obj_player.x &gt; 0
+    {
+        hspeed = -spd;
+    }
+    
+    if x-obj_player.x &lt; 0
+    {
+        hspeed = spd;
+    }
+}
 </string>
           </argument>
         </arguments>
