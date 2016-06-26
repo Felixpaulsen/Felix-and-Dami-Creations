@@ -109,15 +109,20 @@ if hspeed &gt; 0
           <argument>
             <kind>1</kind>
             <string>///Fly over hills
-if distance_to_object(obj_dirt) &lt; 200
+if gravity_on == false
 {
-    y -= 5;
-}
-else
-{
-    if y &lt; ystart
+    if distance_to_object(obj_dirt) &lt; 200 ||
+    distance_to_object(obj_player) &lt; 200 ||
+    distance_to_object(obj_zombie) &lt; 200
     {
-        y += 1;
+        y -= 5;
+    }
+    else
+    {
+        if y &lt; ystart
+        {
+            y += 1;
+        }
     }
 }
 </string>
