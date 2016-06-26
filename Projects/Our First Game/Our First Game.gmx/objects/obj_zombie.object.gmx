@@ -192,7 +192,7 @@ if instance_exists(obj_player)
 {
     move_contact_solid(direction,12);
     vspeed = 0;
-    if !(abs(x-obj_player.x) &lt; 250)
+    if !abs(x-obj_player.x) &lt; 250
     {
         hspeed = -1*hspeed;
     }
