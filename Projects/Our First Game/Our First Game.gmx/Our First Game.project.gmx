@@ -22,6 +22,8 @@
       <sprite>sprites\spr_button_up</sprite>
       <sprite>sprites\spr_button_down</sprite>
     </sprites>
+    <sprite>sprites\spr_heart</sprite>
+    <sprite>sprites\spr_arrow</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_day</background>
@@ -50,6 +52,8 @@
     </objects>
     <object>objects\obj_spawnbird</object>
     <object>objects\obj_zombie</object>
+    <object>objects\obj_health</object>
+    <object>objects\obj_arrow</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_game</room>

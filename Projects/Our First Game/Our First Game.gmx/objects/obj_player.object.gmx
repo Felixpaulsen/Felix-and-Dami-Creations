@@ -29,6 +29,36 @@
 spd = 8;
 dir = 1;
 image_speed = 1;
+hp = 3;
+alarmworking = false;
+draw_red = false;
+arrows = 3*4;
+shootpos = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///End alarm
+alarmworking = false;
+draw_red = false;
 </string>
           </argument>
         </arguments>
@@ -105,23 +135,178 @@ image_xscale = dir;
           <argument>
             <kind>1</kind>
             <string>///Movement
-if keyboard_check(vk_left) &amp;&amp; place_free(x-spd,y)
+if (keyboard_check(vk_left) || keyboard_check(ord('A'))) &amp;&amp; place_free(x-spd,y)
 {
     x-=spd;
     sprite_index = spr_player_run;
     dir = -1;
 }
 
-if keyboard_check(vk_right) &amp;&amp; place_free(x+spd,y)
+if (keyboard_check(vk_right) || keyboard_check(ord('D'))) &amp;&amp; place_free(x+spd,y)
 {
     x+=spd;
     sprite_index = spr_player_run;
     dir = 1;
 }
 
-if keyboard_check(vk_up) &amp;&amp; !place_free(x,y+1)
+if (keyboard_check(vk_up) || keyboard_check(ord('W'))) &amp;&amp; !place_free(x,y+1)
 {
     vspeed -= 8.5;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Arrow
+if mouse_check_button_pressed(mb_left) &amp;&amp; arrows &gt; 0 &amp;&amp; shootpos == true 
+{
+    var arrow = instance_create(x,y,obj_arrow);
+    arrow.speed = 20;
+    arrow.direction = point_direction(x,y,mouse_x,mouse_y);
+    randomize();
+    arrow.grav = 0.5+random(0.1)*choose(-1,1);
+    arrows --;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Handle shootpos
+if window_mouse_get_y() &gt;= 560 &amp;&amp; window_mouse_get_y() &lt;= 688
+{
+    //Left button
+    if window_mouse_get_x() &gt;= 32 &amp;&amp; window_mouse_get_x() &lt;= 160
+    {
+        shootpos = false;
+    }
+    else
+    {
+        shootpos = true;
+    }
+
+    //Right button
+    if window_mouse_get_x() &gt;= 176 &amp;&amp; window_mouse_get_x() &lt;= 304
+    {
+        shootpos = false;
+    }
+    else
+    {
+        shootpos = true;
+    }
+    
+    //Down button
+    if window_mouse_get_x() &gt;= 976 &amp;&amp; window_mouse_get_x() &lt;= 1104
+    {
+        shootpos = false;
+    }
+    else
+    {
+        shootpos = true;
+    }
+    
+    //Up button
+    if window_mouse_get_x() &gt;= 1120 &amp;&amp; window_mouse_get_x() &lt;= 1248
+    {
+        shootpos = false;
+    }
+    else
+    {
+        shootpos = true;
+    }
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_arrow">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collect arrow
+if other.gravity_on == false
+{
+    with(other)
+    {
+        instance_destroy();
+    }
+    arrows ++;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_zombie">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Lose hp
+if alarmworking == false
+{
+    hp -= 0.5;
+    alarm[0] = 10;
+    alarmworking = true;
+    draw_red = true;
 }
 </string>
           </argument>
@@ -154,17 +339,17 @@ if place_meeting(x,y,obj_ladder) //Checking for meeting with ladder
 }
 
 //Ladder Up
-if keyboard_check(vk_up) &amp;&amp; place_meeting(x,y,obj_ladder)
+if (keyboard_check(vk_up) || keyboard_check(ord('W'))) &amp;&amp; place_meeting(x,y,obj_ladder)
     {vspeed=-8}
             
-if keyboard_check_released(vk_up) &amp;&amp; place_meeting(x,y,obj_ladder)
+if (keyboard_check_released(vk_up) || keyboard_check_released(ord('W'))) &amp;&amp; place_meeting(x,y,obj_ladder)
     {vspeed=0}
             
 //Ladder Down
-if keyboard_check(vk_down) &amp;&amp; place_meeting(x,y,obj_ladder)
+if (keyboard_check(vk_down) || keyboard_check(ord('S'))) &amp;&amp; place_meeting(x,y,obj_ladder)
     {vspeed=8}
             
-if keyboard_check_released(vk_down) &amp;&amp; place_meeting(x,y,obj_ladder)
+if (keyboard_check_released(vk_down) || keyboard_check_released(ord('S'))) &amp;&amp; place_meeting(x,y,obj_ladder)
     {vspeed=0}
 </string>
           </argument>
@@ -215,6 +400,36 @@ vspeed = 0;
             <kind>1</kind>
             <string>///Stop animation
 sprite_index = spr_player;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw red
+if draw_red == true
+{
+    draw_set_color(c_red);
+    draw_set_alpha(0.8);
+    draw_rectangle(0,0,1280,720,false);
+    draw_set_alpha(1);
+}
 </string>
           </argument>
         </arguments>
