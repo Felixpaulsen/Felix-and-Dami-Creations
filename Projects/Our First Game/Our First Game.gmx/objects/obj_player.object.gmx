@@ -36,6 +36,7 @@ arrows = 100;
 iron = 0;
 coal = 0;
 birds = 0;
+stone = 10;
 </string>
           </argument>
         </arguments>
@@ -194,6 +195,37 @@ else
 {
     obj_arrow_button.alpha = 1;
 }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_stone">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collect arrow
+if other.gravity_on == false
+{
+    with(other)
+    {
+        instance_destroy();
+    }
+    stone ++;
 }
 </string>
           </argument>
@@ -467,20 +499,42 @@ image_index = -2*hp+6;
           <argument>
             <kind>1</kind>
             <string>///Arrow
-if arrows &gt; 0 &amp;&amp; cursor_sprite == spr_arrow_cursor
+if weapon == "arrow"
 {
-    var arrow = instance_create(x,y,obj_arrow);
-    arrow.speed = 20;
-    arrow.direction = point_direction(x,y,mouse_x,mouse_y);
-    randomize();
-    arrow.grav = 0.5+random(0.1)*choose(-1,1);
-    arrows --;
-    cursor_sprite = noone;
-    instance_activate_object(obj_arrow_button);
-    instance_activate_object(obj_button_up);
-    instance_activate_object(obj_button_down);
-    instance_activate_object(obj_button_left);
-    instance_activate_object(obj_button_right);
+    if arrows &gt; 0 &amp;&amp; cursor_sprite == spr_arrow_cursor
+    {
+        var arrow = instance_create(x,y,obj_arrow);
+        arrow.speed = 20;
+        arrow.direction = point_direction(x,y,mouse_x,mouse_y);
+        randomize();
+        arrow.grav = 0.5+random(0.1)*choose(-1,1);
+        arrows --;
+        cursor_sprite = noone;
+        instance_activate_object(obj_arrow_button);
+        instance_activate_object(obj_button_up);
+        instance_activate_object(obj_button_down);
+        instance_activate_object(obj_button_left);
+        instance_activate_object(obj_button_right);
+    }
+}
+else
+if weapon == "stone"
+{
+    if stone &gt; 0 &amp;&amp; cursor_sprite == spr_arrow_cursor
+    {
+        var stonel = instance_create(x,y,obj_stone);
+        stonel.speed = 20;
+        stonel.direction = point_direction(x,y,mouse_x,mouse_y);
+        randomize();
+        stonel.grav = 0.8+random(0.1)*choose(-1,1);
+        stone --;
+        cursor_sprite = noone;
+        instance_activate_object(obj_arrow_button);
+        instance_activate_object(obj_button_up);
+        instance_activate_object(obj_button_down);
+        instance_activate_object(obj_button_left);
+        instance_activate_object(obj_button_right);
+    }
 }
 </string>
           </argument>
@@ -535,14 +589,30 @@ if draw_red == true
           <argument>
             <kind>1</kind>
             <string>///Make cursor
-if arrows &gt; 0
+if weapon == "arrow"
 {
-    cursor_sprite = spr_arrow_cursor;
-    instance_deactivate_object(obj_arrow_button);
-    instance_deactivate_object(obj_button_up);
-    instance_deactivate_object(obj_button_down);
-    instance_deactivate_object(obj_button_left);
-    instance_deactivate_object(obj_button_right);
+    if arrows &gt; 0
+    {
+        cursor_sprite = spr_arrow_cursor;
+        instance_deactivate_object(obj_arrow_button);
+        instance_deactivate_object(obj_button_up);
+        instance_deactivate_object(obj_button_down);
+        instance_deactivate_object(obj_button_left);
+        instance_deactivate_object(obj_button_right);
+    }
+}
+
+if weapon == "stone"
+{
+    if stone &gt; 0
+    {
+        cursor_sprite = spr_arrow_cursor;
+        instance_deactivate_object(obj_arrow_button);
+        instance_deactivate_object(obj_button_up);
+        instance_deactivate_object(obj_button_down);
+        instance_deactivate_object(obj_button_left);
+        instance_deactivate_object(obj_button_right);
+    }
 }
 </string>
           </argument>

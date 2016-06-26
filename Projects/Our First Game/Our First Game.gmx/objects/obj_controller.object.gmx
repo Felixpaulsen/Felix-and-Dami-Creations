@@ -73,6 +73,11 @@ if obj_player.coal &gt; 0
     draw_sprite_ext(spr_inventory,1,32,32*6+48,1,1,0,c_white,1);
 }
 
+if obj_player.stone &gt; 0
+{
+    draw_sprite_ext(spr_inventory,2,32,32*7+64,1,1,0,c_white,1);
+}
+
 draw_set_halign(fa_left); draw_set_valign(fa_middle);
 draw_set_color(c_black); draw_set_font(fnt_inventory);
 
@@ -94,6 +99,11 @@ if obj_player.iron &gt; 0
 if obj_player.coal &gt; 0
 {
     draw_text(32*2+8,32*6+64,"x"+string(obj_player.coal));
+}
+
+if obj_player.stone &gt; 0
+{
+    draw_text(32*2+8,32*9+16,"x"+string(obj_player.stone));
 }
 </string>
           </argument>

@@ -33,6 +33,7 @@
     <sprites name="Resources">
       <sprite>sprites\spr_iron</sprite>
       <sprite>sprites\spr_coal</sprite>
+      <sprite>sprites\spr_stone</sprite>
       <sprite>sprites\spr_coalblock</sprite>
       <sprite>sprites\spr_ironblock</sprite>
     </sprites>
@@ -53,7 +54,7 @@
         <sprite>sprites\spr_button_right</sprite>
         <sprite>sprites\spr_button_up</sprite>
         <sprite>sprites\spr_button_down</sprite>
-        <sprite>sprites\spr_arrow_button</sprite>
+        <sprite>sprites\spr_weapon_button</sprite>
       </sprites>
     </sprites>
     <sprites name="Other">
@@ -87,6 +88,7 @@
     <objects name="Resources">
       <object>objects\obj_coal</object>
       <object>objects\obj_iron</object>
+      <object>objects\obj_stone</object>
       <object>objects\obj_coalblock</object>
       <object>objects\obj_ironblock</object>
     </objects>
