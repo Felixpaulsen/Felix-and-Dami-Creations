@@ -32,7 +32,7 @@ image_speed = 1;
 hp = 3;
 alarmworking = false;
 draw_red = false;
-arrows = 3*4;
+arrows = 100;
 shootpos = true;
 </string>
           </argument>
@@ -135,53 +135,23 @@ image_xscale = dir;
           <argument>
             <kind>1</kind>
             <string>///Movement
-if (keyboard_check(vk_left) || keyboard_check(ord('A'))) &amp;&amp; place_free(x-spd,y)
+if (keyboard_check(vk_left) || keyboard_check(ord('A'))) &amp;&amp; place_free(x-spd,y) &amp;&amp; cursor_sprite != spr_arrow_cursor
 {
     x-=spd;
     sprite_index = spr_player_run;
     dir = -1;
 }
 
-if (keyboard_check(vk_right) || keyboard_check(ord('D'))) &amp;&amp; place_free(x+spd,y)
+if (keyboard_check(vk_right) || keyboard_check(ord('D'))) &amp;&amp; place_free(x+spd,y) &amp;&amp; cursor_sprite != spr_arrow_cursor
 {
     x+=spd;
     sprite_index = spr_player_run;
     dir = 1;
 }
 
-if (keyboard_check(vk_up) || keyboard_check(ord('W'))) &amp;&amp; !place_free(x,y+1)
+if (keyboard_check(vk_up) || keyboard_check(ord('W'))) &amp;&amp; !place_free(x,y+1) &amp;&amp; cursor_sprite != spr_arrow_cursor
 {
     vspeed -= 8.5;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Arrow
-if mouse_check_button_pressed(mb_left) &amp;&amp; arrows &gt; 0 &amp;&amp; shootpos == true 
-{
-    var arrow = instance_create(x,y,obj_arrow);
-    arrow.speed = 20;
-    arrow.direction = point_direction(x,y,mouse_x,mouse_y);
-    randomize();
-    arrow.grav = 0.5+random(0.1)*choose(-1,1);
-    arrows --;
 }
 </string>
           </argument>
@@ -251,6 +221,38 @@ if window_mouse_get_y() &gt;= 560 &amp;&amp; window_mouse_get_y() &lt;= 688
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Arrow button
+if instance_number(obj_arrow_button) &gt; 0
+{
+if arrows &lt; 1
+{
+    obj_arrow_button.alpha = 0.5;
+}
+else
+{
+    obj_arrow_button.alpha = 1;
+}
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="4" ename="obj_arrow">
       <action>
@@ -313,6 +315,40 @@ if alarmworking == false
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_bird">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Eat bird
+if other.sprite_index == spr_dead_bird &amp;&amp; other.speed == 0
+{
+    if hp &lt; 3
+    {
+        hp += 0.5;
+        with(other)
+        {
+            instance_destroy();
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_ladder">
       <action>
         <libid>1</libid>
@@ -339,14 +375,14 @@ if place_meeting(x,y,obj_ladder) //Checking for meeting with ladder
 }
 
 //Ladder Up
-if (keyboard_check(vk_up) || keyboard_check(ord('W'))) &amp;&amp; place_meeting(x,y,obj_ladder)
+if (keyboard_check(vk_up) || keyboard_check(ord('W'))) &amp;&amp; place_meeting(x,y,obj_ladder) &amp;&amp; cursor_sprite != spr_arrow_cursor
     {vspeed=-8}
             
 if (keyboard_check_released(vk_up) || keyboard_check_released(ord('W'))) &amp;&amp; place_meeting(x,y,obj_ladder)
     {vspeed=0}
             
 //Ladder Down
-if (keyboard_check(vk_down) || keyboard_check(ord('S'))) &amp;&amp; place_meeting(x,y,obj_ladder)
+if (keyboard_check(vk_down) || keyboard_check(ord('S'))) &amp;&amp; place_meeting(x,y,obj_ladder) &amp;&amp; cursor_sprite != spr_arrow_cursor
     {vspeed=8}
             
 if (keyboard_check_released(vk_down) || keyboard_check_released(ord('S'))) &amp;&amp; place_meeting(x,y,obj_ladder)
@@ -405,6 +441,44 @@ sprite_index = spr_player;
         </arguments>
       </action>
     </event>
+    <event eventtype="6" enumb="56">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Arrow
+if arrows &gt; 0 &amp;&amp; shootpos == true &amp;&amp; cursor_sprite == spr_arrow_cursor
+{
+    var arrow = instance_create(x,y,obj_arrow);
+    arrow.speed = 20;
+    arrow.direction = point_direction(x,y,mouse_x,mouse_y);
+    randomize();
+    arrow.grav = 0.5+random(0.1)*choose(-1,1);
+    arrows --;
+    cursor_sprite = noone;
+    instance_activate_object(obj_arrow_button);
+    instance_activate_object(obj_button_up);
+    instance_activate_object(obj_button_down);
+    instance_activate_object(obj_button_left);
+    instance_activate_object(obj_button_right);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -429,6 +503,38 @@ if draw_red == true
     draw_set_alpha(0.8);
     draw_rectangle(0,0,1280,720,false);
     draw_set_alpha(1);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="35">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Make cursor
+if arrows &gt; 0
+{
+    cursor_sprite = spr_arrow_cursor;
+    instance_deactivate_object(obj_arrow_button);
+    instance_deactivate_object(obj_button_up);
+    instance_deactivate_object(obj_button_down);
+    instance_deactivate_object(obj_button_left);
+    instance_deactivate_object(obj_button_right);
 }
 </string>
           </argument>

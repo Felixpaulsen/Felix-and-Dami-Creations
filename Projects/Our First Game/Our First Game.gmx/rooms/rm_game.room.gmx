@@ -18,7 +18,7 @@ instance_create(x,y,obj_health);</code>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>-1</isSet>
-    <w>1016</w>
+    <w>1000</w>
     <h>600</h>
     <showGrid>0</showGrid>
     <showObjects>-1</showObjects>
@@ -28,9 +28,9 @@ instance_create(x,y,obj_health);</code>
     <showViews>0</showViews>
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
-    <page>1</page>
-    <xoffset>756</xoffset>
-    <yoffset>252</yoffset>
+    <page>4</page>
+    <xoffset>-185</xoffset>
+    <yoffset>-127</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="-1" foreground="0" name="bg_day" x="0" y="0" htiled="-1" vtiled="-1" hspeed="-1" vspeed="0" stretch="0"/>
@@ -1406,6 +1406,7 @@ instance_create(x,y,obj_health);</code>
     <instance objName="obj_button_up" x="1120" y="560" name="inst_D586694E" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_button_down" x="976" y="560" name="inst_7B1FFDD3" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_zombie" x="1872" y="1200" name="inst_4B0152A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_arrow_button" x="1120" y="32" name="inst_52760C58" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
