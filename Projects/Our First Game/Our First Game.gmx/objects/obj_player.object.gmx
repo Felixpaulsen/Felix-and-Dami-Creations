@@ -138,20 +138,28 @@ image_xscale = dir;
 if (keyboard_check(vk_left) || keyboard_check(ord('A'))) &amp;&amp; place_free(x-spd,y) &amp;&amp; cursor_sprite != spr_arrow_cursor
 {
     x-=spd;
-    sprite_index = spr_player_run;
+    sprite_index = asset_get_index("spr_player_run_"+string(-2*hp+6));
     dir = -1;
 }
 
 if (keyboard_check(vk_right) || keyboard_check(ord('D'))) &amp;&amp; place_free(x+spd,y) &amp;&amp; cursor_sprite != spr_arrow_cursor
 {
     x+=spd;
-    sprite_index = spr_player_run;
+    sprite_index = asset_get_index("spr_player_run_"+string(-2*hp+6));
     dir = 1;
 }
 
 if (keyboard_check(vk_up) || keyboard_check(ord('W'))) &amp;&amp; !place_free(x,y+1) &amp;&amp; cursor_sprite != spr_arrow_cursor
 {
     vspeed -= 8.5;
+}
+
+if string_char_at(string(sprite_index),12) == "r"
+{
+    if real(string_char_at(sprite_index,16)) != -2*hp+6
+    {
+        sprite_index = asset_get_index("spr_player_run_"+string(-2*hp+6));
+    }
 }
 </string>
           </argument>
@@ -436,6 +444,9 @@ vspeed = 0;
             <kind>1</kind>
             <string>///Stop animation
 sprite_index = spr_player;
+image_speed = 0;
+image_index = -2*hp+6;
+
 </string>
           </argument>
         </arguments>

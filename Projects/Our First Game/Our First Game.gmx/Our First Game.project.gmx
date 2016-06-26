@@ -9,7 +9,12 @@
     <sprite>sprites\spr_dirt</sprite>
     <sprite>sprites\spr_dirt_cave</sprite>
     <sprite>sprites\spr_player</sprite>
-    <sprite>sprites\spr_player_run</sprite>
+    <sprite>sprites\spr_player_run_0</sprite>
+    <sprite>sprites\spr_player_run_1</sprite>
+    <sprite>sprites\spr_player_run_2</sprite>
+    <sprite>sprites\spr_player_run_3</sprite>
+    <sprite>sprites\spr_player_run_4</sprite>
+    <sprite>sprites\spr_player_run_5</sprite>
     <sprite>sprites\spr_ladder</sprite>
     <sprite>sprites\spr_zombie</sprite>
     <sprite>sprites\spr_bird</sprite>
