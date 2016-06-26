@@ -47,6 +47,7 @@
     <sprites name="GUI">
       <sprite>sprites\spr_heart</sprite>
       <sprite>sprites\spr_arrow_cursor</sprite>
+      <sprite>sprites\spr_inventory</sprite>
       <sprites name="Buttons">
         <sprite>sprites\spr_button_left</sprite>
         <sprite>sprites\spr_button_right</sprite>
@@ -66,6 +67,9 @@
   <scripts name="scripts">
     <script>scripts\AddVKey.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt_inventory</font>
+  </fonts>
   <objects name="objects">
     <objects name="Player">
       <object>objects\obj_player</object>
@@ -88,13 +92,6 @@
     </objects>
     <objects name="Weapons">
       <object>objects\obj_arrow</object>
-    </objects>
-    <objects name="Engines">
-      <objects name="Lightning">
-        <object>objects\obj_light</object>
-        <object>objects\obj_light_engine</object>
-        <object>objects\obj_draw_sky</object>
-      </objects>
     </objects>
     <objects name="GUI">
       <object>objects\obj_health</object>

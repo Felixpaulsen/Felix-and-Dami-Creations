@@ -33,7 +33,9 @@ hp = 3;
 alarmworking = false;
 draw_red = false;
 arrows = 100;
-shootpos = true;
+iron = 0;
+coal = 0;
+birds = 0;
 </string>
           </argument>
         </arguments>
@@ -181,70 +183,6 @@ if string_char_at(string(sprite_index),12) == "r"
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Handle shootpos
-if window_mouse_get_y() &gt;= 560 &amp;&amp; window_mouse_get_y() &lt;= 688
-{
-    //Left button
-    if window_mouse_get_x() &gt;= 32 &amp;&amp; window_mouse_get_x() &lt;= 160
-    {
-        shootpos = false;
-    }
-    else
-    {
-        shootpos = true;
-    }
-
-    //Right button
-    if window_mouse_get_x() &gt;= 176 &amp;&amp; window_mouse_get_x() &lt;= 304
-    {
-        shootpos = false;
-    }
-    else
-    {
-        shootpos = true;
-    }
-    
-    //Down button
-    if window_mouse_get_x() &gt;= 976 &amp;&amp; window_mouse_get_x() &lt;= 1104
-    {
-        shootpos = false;
-    }
-    else
-    {
-        shootpos = true;
-    }
-    
-    //Up button
-    if window_mouse_get_x() &gt;= 1120 &amp;&amp; window_mouse_get_x() &lt;= 1248
-    {
-        shootpos = false;
-    }
-    else
-    {
-        shootpos = true;
-    }
-
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///Arrow button
 if instance_number(obj_arrow_button) &gt; 0
 {
@@ -256,36 +194,6 @@ else
 {
     obj_arrow_button.alpha = 1;
 }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_iron">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Collect
-if other.collectable == true
-{
-    with(other)
-    {
-        instance_destroy();
-    }
 }
 </string>
           </argument>
@@ -366,6 +274,37 @@ if other.gravity_on == false
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_iron">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collect
+if other.collectable == true
+{
+    with(other)
+    {
+        instance_destroy();
+        obj_player.iron ++;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_coal">
       <action>
         <libid>1</libid>
@@ -389,6 +328,7 @@ if other.collectable == true
     with(other)
     {
         instance_destroy();
+        obj_player.coal ++;
     }
 }
 </string>
@@ -441,14 +381,11 @@ vspeed = 0;
             <string>///Eat bird
 if other.sprite_index == spr_dead_bird &amp;&amp; other.speed == 0
 {
-    if hp &lt; 3
+    with(other)
     {
-        hp += 0.5;
-        with(other)
-        {
-            instance_destroy();
-        }
+        instance_destroy();
     }
+    birds ++;
 }
 </string>
           </argument>
@@ -530,7 +467,7 @@ image_index = -2*hp+6;
           <argument>
             <kind>1</kind>
             <string>///Arrow
-if arrows &gt; 0 &amp;&amp; shootpos == true &amp;&amp; cursor_sprite == spr_arrow_cursor
+if arrows &gt; 0 &amp;&amp; cursor_sprite == spr_arrow_cursor
 {
     var arrow = instance_create(x,y,obj_arrow);
     arrow.speed = 20;
