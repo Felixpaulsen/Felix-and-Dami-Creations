@@ -53,7 +53,7 @@
           </argument>
           <argument>
             <kind>0</kind>
-            <string>irandom_range(100,300)</string>
+            <string>irandom_range(0,500)</string>
           </argument>
         </arguments>
       </action>
