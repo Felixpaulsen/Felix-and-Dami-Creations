@@ -129,7 +129,7 @@ image_xscale = hspeed/spd;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_stone">
+    <event eventtype="4" ename="obj_arrow">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -170,7 +170,7 @@ if other.gravity_on == true
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_arrow">
+    <event eventtype="4" ename="obj_stone">
       <action>
         <libid>1</libid>
         <id>603</id>

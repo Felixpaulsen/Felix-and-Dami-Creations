@@ -18,7 +18,7 @@ instance_create(x,y,obj_health);</code>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>-1</isSet>
-    <w>1000</w>
+    <w>984</w>
     <h>600</h>
     <showGrid>-1</showGrid>
     <showObjects>-1</showObjects>
@@ -28,9 +28,9 @@ instance_create(x,y,obj_health);</code>
     <showViews>0</showViews>
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
-    <page>1</page>
-    <xoffset>1889</xoffset>
-    <yoffset>36</yoffset>
+    <page>0</page>
+    <xoffset>5901</xoffset>
+    <yoffset>2057</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="-1" foreground="0" name="bg_day" x="0" y="0" htiled="-1" vtiled="-1" hspeed="-1" vspeed="0" stretch="0"/>
@@ -1314,6 +1314,10 @@ instance_create(x,y,obj_health);</code>
     <instance objName="obj_dirt_cave" x="1664" y="1280" name="inst_017FD307" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_dirt_cave" x="1728" y="1280" name="inst_B21B8A8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_coalblock" x="4480" y="1344" name="inst_0D6FF863" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_stone" x="1622" y="619" name="inst_3B9F27E2" locked="0" code="grav = 0.8+random(0.1)*choose(-1,1);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_stone" x="1643" y="595" name="inst_EC48CACA" locked="0" code="grav = 0.8+random(0.1)*choose(-1,1);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_stone" x="1665" y="569" name="inst_AEE58E29" locked="0" code="grav = 0.8+random(0.1)*choose(-1,1);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_stone" x="1603" y="607" name="inst_E63CF941" locked="0" code="grav = 0.8+random(0.1)*choose(-1,1);" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

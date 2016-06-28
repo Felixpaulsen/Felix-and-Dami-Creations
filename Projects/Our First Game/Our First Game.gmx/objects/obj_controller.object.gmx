@@ -53,14 +53,14 @@ if keyboard_check(ord('R'))
           <argument>
             <kind>1</kind>
             <string>///Draw inventory
-if obj_player.arrows &gt; 0
+if obj_player.stone &gt; 0
 {
-    draw_sprite_ext(spr_arrow,0,32+16,32*3+16,1,1,0,c_white,1);
+    draw_sprite_ext(spr_inventory,2,32,32*3,1,1,0,c_white,1);
 }
 
-if obj_player.birds &gt; 0
+if obj_player.coal &gt; 0
 {
-    draw_sprite_ext(spr_dead_bird,1,32+16,32*4+32,0.5,0.5,0,c_white,1);
+    draw_sprite_ext(spr_inventory,1,32,32*4+16,1,1,0,c_white,1);
 }
 
 if obj_player.iron &gt; 0
@@ -68,27 +68,27 @@ if obj_player.iron &gt; 0
     draw_sprite_ext(spr_inventory,0,32,32*5+32,1,1,0,c_white,1);
 }
 
-if obj_player.coal &gt; 0
+if obj_player.arrows &gt; 0
 {
-    draw_sprite_ext(spr_inventory,1,32,32*6+48,1,1,0,c_white,1);
+    draw_sprite_ext(spr_arrow,0,32+16,32*6+48+16,1,1,0,c_white,1);
 }
 
-if obj_player.stone &gt; 0
+if obj_player.birds &gt; 0
 {
-    draw_sprite_ext(spr_inventory,2,32,32*7+64,1,1,0,c_white,1);
+    draw_sprite_ext(spr_inventory,3,32,32*7+64,1,1,0,c_white,1);
 }
 
 draw_set_halign(fa_left); draw_set_valign(fa_middle);
 draw_set_color(c_black); draw_set_font(fnt_inventory);
 
-if obj_player.arrows &gt; 0
+if obj_player.stone &gt; 0
 {
-    draw_text(32*2+8,32*3+16,"x"+string(obj_player.arrows));
+    draw_text(32*2+8,32*3+16,"x"+string(obj_player.stone));
 }
 
-if obj_player.birds &gt; 0
+if obj_player.coal &gt; 0
 {
-    draw_text(32*2+8,32*4+32,"x"+string(obj_player.birds));
+    draw_text(32*2+8,32*4+32,"x"+string(obj_player.coal));
 }
 
 if obj_player.iron &gt; 0
@@ -96,14 +96,14 @@ if obj_player.iron &gt; 0
     draw_text(32*2+8,32*5+48,"x"+string(obj_player.iron));
 }
 
-if obj_player.coal &gt; 0
+if obj_player.arrows &gt; 0
 {
-    draw_text(32*2+8,32*6+64,"x"+string(obj_player.coal));
+    draw_text(32*2+8,32*6+64,"x"+string(obj_player.arrows));
 }
 
-if obj_player.stone &gt; 0
+if obj_player.birds &gt; 0
 {
-    draw_text(32*2+8,32*9+16,"x"+string(obj_player.stone));
+    draw_text(32*2+8,32*9+16,"x"+string(obj_player.birds));
 }
 </string>
           </argument>
